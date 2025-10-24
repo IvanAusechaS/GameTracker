@@ -1,38 +1,73 @@
-.App {
+.card-juego{
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
   text-align: center;
+  transition: transform 0.2s ease;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card-juego:hover{
+  transform: scale(1.03);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card-imagen{
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-titulo{
+  font-size: 1.1rem;
+  color: #222;
+  margin: 5px 0;
+}
+.card-genero,
+.card-horas,
+#card-estado{
+  font-size: 0.9rem;
+  color: #555;
+  margin: 2px 0;
+}
+.form-juego {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-juego h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-juego label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.form-juego input,
+.form-juego select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.form-juego button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.form-juego button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
