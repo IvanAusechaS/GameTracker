@@ -1,19 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import TarjetaJuego from './components/TarjetaJuegos';
 import ListaJuegos from './components/ListaJuegos'
 import FormularioJuego from './components/FormularioJuego';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { obtenerJuegos, agregarJuego as agregarJuegoAPI } from './services/juegoService';
 
 function App() {
-  const [juegos, setJuegos] = useState([
-        {titulo: 'Fornite', genero: 'Accion', horasJugadas: 415, estado: true},
-        {titulo: 'World of Wardcraft', genero: 'fantasia', horasJugadas: 59, estado: true},
-        {titulo: 'Zelda', genero: 'Ficcion', horasJugadas: 0, estado: false},
-    ])
 
-    const agregarJuego = (nuevoJuego) => {
-      setJuegos([...juegos, nuevoJuego])
+  const [juegos, setJuegos] = useState([]);
+
+  useEffect(() => {
+    cargarJuegos();
+  }, []); 
+
+  const cargarJuegos = async () => {
+    const datos = await obtenerJuegos();
+    setJuegos(datos);
+  }
+
+  const agregarJuego = async (nuevoJuego) => {
+    try{
+        const juegoGuardado = await agregarJuegoAPI(nuevoJuego);
+        setJuegos([...juegos, juegoGuardado]);
+    }catch(error){
+      console.error("Hubo un error al agregar un juego en APP", error)
+    }
     }
     
   return (
@@ -23,5 +33,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
