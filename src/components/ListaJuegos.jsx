@@ -1,24 +1,27 @@
 import TarjetaJuego from "./TarjetaJuegos";
 
-
-
-function ListaJuegos({juegos}){
-    return(
-        <div>
+function ListaJuegos({ juegos, onEditar, onEliminar }) {
+    return (
+        <div className="lista-juegos-container">
             {juegos.length > 0 ? (
-                juegos.map((juego,index)=>(
-                <TarjetaJuego
-                key={index}
-                titulo={juego.titulo}
-                genero={juego.genero}
-                horasJugadas={juego.horasJugadas}
-                estado={juego.estado}
-                />
-            ))
-        ) : (
-            <p>No hay juegos por agregar</p>
-        )}
+                <div className="lista-juegos">
+                    {juegos.map((juego) => (
+                        <TarjetaJuego
+                            key={juego._id}
+                            juego={juego}
+                            onEditar={onEditar}
+                            onEliminar={onEliminar}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="mensaje-vacio">
+                    <p>No tienes juegos agregados</p>
+                    <p className="subtitulo">Busca y agrega tus juegos favoritos</p>
+                </div>
+            )}
         </div>
     );
 }
+
 export default ListaJuegos;
